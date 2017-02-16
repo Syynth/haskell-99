@@ -39,4 +39,11 @@ myReverse :: [a] -> [a]
 myReverse [] = []
 myReverse (x:xs) = myReverse xs ++ [x]
 
-myReverse' = foldl (flip (:)) []
+{-
+Problem 6.
+Determine whether a list is a palidrome
+-}
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome [] = True
+isPalindrome [_] = True
+isPalindrome (x:xs) = x == last xs && (isPalindrome . init) xs
