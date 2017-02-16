@@ -79,3 +79,10 @@ Pack consecutive duplicates of list elements into sublists
 pack :: (Eq a) => [a] -> [[a]]
 pack [] = []
 pack (x:xs) = takeWhile (==x) (x:xs) : (pack $ dropWhile (==x) xs)
+
+{-
+Problem 10.
+Implement Run Length Encoding using `pack`
+-}
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode = map (\a -> (length a, head a)) . pack
