@@ -47,3 +47,15 @@ isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome [] = True
 isPalindrome [_] = True
 isPalindrome (x:xs) = x == last xs && (isPalindrome . init) xs
+
+isPalindrome' l = l == (reverse l)
+
+{-
+Problem 7.
+Flatten nested lists
+-}
+data NL a = El a | L [NL a]
+
+flatten :: NL a -> [a]
+flatten (El a) = [a]
+flatten (L ls) = foldl (\ls' nl -> ls' ++ flatten nl) [] ls
