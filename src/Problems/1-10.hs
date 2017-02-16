@@ -59,3 +59,14 @@ data NL a = El a | L [NL a]
 flatten :: NL a -> [a]
 flatten (El a) = [a]
 flatten (L ls) = foldl (\ls' nl -> ls' ++ flatten nl) [] ls
+
+{-
+Problem 8.
+Eliminate consecutive duplicates
+-}
+compress :: (Eq a) => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress (x:y:zs) = if x == y then (compress $ y : zs) else x : (compress $ y : zs)
+
+compress' = map head . group
