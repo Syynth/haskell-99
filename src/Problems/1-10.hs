@@ -76,5 +76,6 @@ compress' = map head . group
 Problem 9.
 Pack consecutive duplicates of list elements into sublists
 -}
---pack :: (Eq a) => [a] -> [[a]]
---pack = group
+pack :: (Eq a) => [a] -> [[a]]
+pack [] = []
+pack (x:xs) = takeWhile (==x) (x:xs) : (pack $ dropWhile (==x) xs)
