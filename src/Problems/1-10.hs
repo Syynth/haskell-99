@@ -1,4 +1,4 @@
-
+import Data.List
 {-
 Problem 1.
 Find the last element of a list
@@ -69,4 +69,12 @@ compress [] = []
 compress [x] = [x]
 compress (x:y:zs) = if x == y then (compress $ y : zs) else x : (compress $ y : zs)
 
+compress' :: (Eq a) => [a] -> [a]
 compress' = map head . group
+
+{-
+Problem 9.
+Pack consecutive duplicates of list elements into sublists
+-}
+--pack :: (Eq a) => [a] -> [[a]]
+--pack = group
